@@ -1,8 +1,9 @@
 import React from 'react'
+import './chatbar.scss'
 
 const chatbar = () => {
     return (
-        <div>chatbar</div>
+        <div className="chatbar">Chatbar</div>
     )
 }
 
