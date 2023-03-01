@@ -12,16 +12,21 @@ import Chatbar from "./components/chatbar/Chatbar"
 import Home from "./page/home/Home"
 import Profile from "./page/profile/Profile"
 import "./style.scss"
+import { useContext } from "react";
+import { DarkModeContext } from "./context/darkModeContext";
 
 
 
 function App() {
 
   const currentUser = true
+  const { darkMode } = useContext(DarkModeContext)
+
+  console.log(darkMode)
 
   const Layout = () => {
     return (
-      <div className="theme-dark">
+      <div className={`theme-${darkMode ? "dark" : "light"}`}>
         <Navbar />
         <div style={{ display: "flex" }}>
           <Leftbar />
