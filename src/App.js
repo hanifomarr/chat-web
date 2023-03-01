@@ -11,6 +11,7 @@ import Leftbar from "./components/leftbar/Leftbar"
 import Chatbar from "./components/chatbar/Chatbar"
 import Home from "./page/home/Home"
 import Profile from "./page/profile/Profile"
+import "./style.scss"
 
 
 
@@ -20,7 +21,7 @@ function App() {
 
   const Layout = () => {
     return (
-      <div>
+      <div className="theme-dark">
         <Navbar />
         <div style={{ display: "flex" }}>
           <Leftbar />
