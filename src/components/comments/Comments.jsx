@@ -23,6 +23,11 @@ function comments() {
 
     return (
         <div className="comments">
+            <div className="write">
+                <img src={comments[0].profilePicture} alt="" />
+                <input type="text" />
+                <button>Send</button>
+            </div>
 
             {comments.map((comment =>
                 <div className="comment">
