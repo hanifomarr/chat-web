@@ -8,6 +8,7 @@ const home = () => {
         <div className="homepage">
             <Strories />
             <Posts />
+
         </div>
     )
 }
