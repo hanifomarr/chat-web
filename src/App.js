@@ -1,11 +1,6 @@
 import Login from "./page/login/Login"
 import Register from "./page/register/Register";
-import {
-  createBrowserRouter,
-  Navigate,
-  Outlet,
-  RouterProvider,
-} from "react-router-dom";
+import { createBrowserRouter, BrowserRouter, Routes, Route, Navigate, Outlet, RouterProvider } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar"
 import Leftbar from "./components/leftbar/Leftbar"
 import Chatbar from "./components/chatbar/Chatbar"
@@ -14,15 +9,15 @@ import Profile from "./page/profile/Profile"
 import "./style.scss"
 import { useContext } from "react";
 import { DarkModeContext } from "./context/darkModeContext";
+import { AuthContext } from "./context/AuthContext";
 
 
 
 function App() {
 
-  const currentUser = true
+  const { currentUser } = useContext(AuthContext);
   const { darkMode } = useContext(DarkModeContext)
 
-  console.log(darkMode)
 
   const Layout = () => {
     return (
@@ -46,6 +41,28 @@ function App() {
     }
     return children
   }
+
+  //   return (
+  //     <BrowserRouter>
+  //       <Routes>
+  //         <Route path="/">
+  //           <Route
+  //             index
+  //             element={
+  //               <ProtectedRoute>
+  //                 <Home />
+  //               </ProtectedRoute>
+  //             }
+  //           />
+  //           <Route path="login" element={<Login />} />
+  //           <Route path="register" element={<Register />} />
+  //         </Route>
+  //       </Routes>
+  //     </BrowserRouter>
+  //   );
+  // }
+
+  // export default App;
 
   const router = createBrowserRouter([
     {
