@@ -28,9 +28,23 @@
                 border-radius: 10px;
                 background-color: themed("bg");
 
-                span {
-                    font-size: 14px;
+                .itemMenu {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
                 }
+
+                input {
+                    border: none;
+                    border-bottom: 1px solid themed("border");
+                    margin: 20px 0px;
+                    padding: 5px 10px;
+                    width: 100%;
+                    background-color: transparent;
+                    color: themed("textColor");
+                }
+
+
 
                 .user {
                     display: flex;
