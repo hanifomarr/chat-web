@@ -1,6 +1,6 @@
 import Login from "./page/login/Login"
 import Register from "./page/register/Register";
-import { createBrowserRouter, BrowserRouter, Routes, Route, Navigate, Outlet, RouterProvider } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Navigate, Outlet } from "react-router-dom";
 import Navbar from "./components/navbar/Navbar"
 import Leftbar from "./components/leftbar/Leftbar"
 import Chatbar from "./components/chatbar/Chatbar"
@@ -15,8 +15,7 @@ import { AuthContext } from "./context/AuthContext";
 
 function App() {
 
-  const { currentUser } = useContext(AuthContext);
-  const { darkMode } = useContext(DarkModeContext)
+  const { currentUser, darkMode } = useContext(AuthContext, DarkModeContext);
 
 
   const Layout = () => {
@@ -42,56 +41,22 @@ function App() {
     return children
   }
 
-  //   return (
-  //     <BrowserRouter>
-  //       <Routes>
-  //         <Route path="/">
-  //           <Route
-  //             index
-  //             element={
-  //               <ProtectedRoute>
-  //                 <Home />
-  //               </ProtectedRoute>
-  //             }
-  //           />
-  //           <Route path="login" element={<Login />} />
-  //           <Route path="register" element={<Register />} />
-  //         </Route>
-  //       </Routes>
-  //     </BrowserRouter>
-  //   );
-  // }
-
-  // export default App;
-
-  const router = createBrowserRouter([
-    {
-      path: "/",
-      element: <ProtectedRoute><Layout /></ProtectedRoute>,
-      children: [
-        {
-          path: "/",
-          element: <Home />
-        },
-        {
-          path: "/profile/:id",
-          element: <Profile />
-        }
-      ]
-    },
-    {
-      path: "/login",
-      element: <Login />,
-    },
-    {
-      path: "/register",
-      element: <Register />,
-    },
-  ]);
   return (
-    <div>
-      <RouterProvider router={router} />
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<ProtectedRoute>
+          <Layout />
+        </ProtectedRoute>}>
+          <Route
+            path="/"
+            element={<Home />}
+          />
+          <Route path="profile/:id" element={<Profile />} />
+        </Route>
+        <Route path="login" element={<Login />} />
+        <Route path="register" element={<Register />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
