@@ -1,0 +1,28 @@
+.chatpage {
+
+    .chatInfo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+
+        span {}
+
+        .chatIcons {
+            display: flex;
+            gap: 10px;
+        }
+
+    }
+
+    .messages {
+        background-color: floralwhite;
+        padding: 10px;
+        height: 100%;
+    }
+
+    .input {
+        background-color: white;
+        height: 50px;
+        padding: 10px;
+    }
+}

@@ -7,9 +7,11 @@ import { Link } from 'react-router-dom';
 import { DarkModeContext } from '../../context/darkModeContext';
 import { signOut } from 'firebase/auth'
 import { auth } from '../../firebase';
+import { AuthContext } from "../../context/AuthContext";
 
 const Navbar = () => {
 
+    const { currentUser } = useContext(AuthContext)
     const { toggle } = useContext(DarkModeContext)
 
     return (
@@ -28,7 +30,7 @@ const Navbar = () => {
                 <NotificationsActiveRoundedIcon onClick={() => signOut(auth)} />
                 < div className="user">
                     <img src="https://images.pexels.com/photos/3543419/pexels-photo-3543419.jpeg" alt="profile" />
-                    <span>Seman Ali</span>
+                    <span>{currentUser.email}</span>
                 </div>
             </div>
         </div >

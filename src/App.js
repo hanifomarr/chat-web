@@ -49,7 +49,6 @@ function App() {
         </ProtectedRoute>}>
           <Route path="/" element={<Home />} />
           <Route path="profile/:id" element={<Profile />} />
-          <Route path="marketplace" element={<Marketplace />} />
         </Route>
         <Route path="login" element={<Login />} />
         <Route path="register" element={<Register />} />
