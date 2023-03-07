@@ -93,7 +93,7 @@ const Search = () => {
             {err && <div><span>User not found</span></div>}
             {user && <div className="userChat" onClick={handleSelect}>
                 <div className="userChatInfo">
-                    <img src={user.profileURL} alt="" />
+                    <img src={user.photoURL} alt="" />
                     <span>{user.displayName}</span>
                 </div>
             </div>}
