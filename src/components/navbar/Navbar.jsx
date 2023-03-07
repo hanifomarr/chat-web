@@ -29,7 +29,7 @@ const Navbar = () => {
                 <HomeRoundedIcon onClick={toggle} />
                 <NotificationsActiveRoundedIcon onClick={() => signOut(auth)} />
                 < div className="user">
-                    <img src="https://images.pexels.com/photos/3543419/pexels-photo-3543419.jpeg" alt="profile" />
+                    <img src={currentUser.photoURL} alt="profile" />
                     <span>{currentUser.email}</span>
                 </div>
             </div>

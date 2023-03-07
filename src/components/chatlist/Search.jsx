@@ -59,6 +59,7 @@ const Search = () => {
                     [combinedId + ".userInfo"]: {
                         uid: user.uid,
                         displayName: user.displayName,
+                        photoURL: user.photoURL,
                     },
                     [combinedId + ".date"]: serverTimestamp(),
                 });
@@ -67,6 +68,7 @@ const Search = () => {
                     [combinedId + ".userInfo"]: {
                         uid: currentUser.uid,
                         displayName: currentUser.displayName,
+                        photoURL: currentUser.photoURL,
                     },
                     [combinedId + ".date"]: serverTimestamp(),
                 });

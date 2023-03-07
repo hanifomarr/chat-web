@@ -2,16 +2,10 @@ import React from 'react'
 import "./leftbar.scss"
 import Home from "../../assets/home.png"
 import Marketplace from "../../assets/marketplace.png"
-import Friend from "../../assets/1.png"
-
-import Group from "../../assets/3.png"
 import Events from "../../assets/4.png"
 import Course from "../../assets/5.png"
 import Fund from "../../assets/6.png"
 import Gallery from "../../assets/7.png"
-import ExitToAppRoundedIcon from '@mui/icons-material/ExitToAppRounded';
-import StorefrontRoundedIcon from '@mui/icons-material/StorefrontRounded';
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
 
 function leftbar() {
     return (
