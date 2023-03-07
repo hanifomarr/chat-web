@@ -18,12 +18,13 @@ const Register = () => {
         try {
             const res = await createUserWithEmailAndPassword(auth, email, password)
 
-            await setDoc(doc(db, "deer_users", res.user.email), {
+            await setDoc(doc(db, "deer_users", res.user.uid), {
+                uid: res.user.uid,
                 displayName,
                 email,
             });
 
-            await setDoc(doc(db, "userChats", res.user.email), {});
+            await setDoc(doc(db, "userChats", res.user.uid), {});
 
             navigate("/")
 

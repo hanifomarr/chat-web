@@ -1,30 +1,45 @@
-import React from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { doc, onSnapshot } from "firebase/firestore";
+import { db } from '../../firebase';
+import { AuthContext } from "../../context/AuthContext";
+import { ChatContext } from '../../context/ChatContext';
 
 function Userchat() {
+
+    const [chats, setChats] = useState([]);
+    const { currentUser } = useContext(AuthContext);
+    const { dispatch } = useContext(ChatContext);
+
+    useEffect(() => {
+        const getChats = () => {
+            const unsub = onSnapshot(doc(db, "userChats", currentUser.uid), (doc) => {
+                setChats(doc.data());
+            });
+
+            return () => {
+                unsub();
+            };
+        };
+
+        currentUser.uid && getChats();
+    }, [currentUser.uid]);
+
+    const handleSelect = (u) => {
+        dispatch({ type: "CHANGE_USER", payload: u });
+    };
+
     return (
         <div>
-            <div className="userChat">
-                <div className="userChatInfo">
-                    <img src="https://images.pexels.com/photos/3543419/pexels-photo-3543419.jpeg" alt="" />
-                    <div className="online"></div>
-                    <span>Seman Fastrexs</span>
+            {Object.entries(chats)?.map((chat) => (
+                <div className="userChat" key={chat[0]} onClick={() => handleSelect(chat[1].userInfo)}>
+                    <div className="userChatInfo">
+                        <img src={chat[1].userInfo.photURL} alt="" />
+                        <div className="online"></div>
+                        <span>{chat[1].userInfo.displayName}</span>
+                        <p>{chat[1].userInfo.lastMessage?.text}</p>
+                    </div>
                 </div>
-            </div>
-
-            <div className="userChat">
-                <div className="userChatInfo">
-                    <img src="https://images.pexels.com/photos/3543419/pexels-photo-3543419.jpeg" alt="" />
-                    <div className="online"></div>
-                    <span>Alif Pro Badminton</span>
-                </div>
-            </div>
-            <div className="userChat">
-                <div className="userChatInfo">
-                    <img src="https://images.pexels.com/photos/3543419/pexels-photo-3543419.jpeg" alt="" />
-                    <div className="online"></div>
-                    <span>Taqiy PPCM</span>
-                </div>
-            </div>
+            ))}
         </div>
     )
 }
